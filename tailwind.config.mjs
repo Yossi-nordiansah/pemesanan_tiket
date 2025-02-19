@@ -10,6 +10,9 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "#0096CF",
+        secondary: "#201658",
+        tosca : "#20F1EE"
       },
     },
   },
