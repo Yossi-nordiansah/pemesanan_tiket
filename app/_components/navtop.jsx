@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navtop = () => {
     return (
-        <div className='fixed px-4 py-2 flex justify-between w-full'>
+        <div className='fixed px-4 py-2 flex justify-between w-full z-20'>
             <div className='flex items-center gap-2 '>
                 <img src="/images/logometavfest.png" alt="Logo" className='w-10'/>
                 <h1 className='text-white font-bold text-4xl'>MetaVFest</h1>
