@@ -22,13 +22,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body 
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navtop/>
-        <Navbar/>
-          {children}
-        <Footer/>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative h-screen overflow-y-auto`}>
+        <div className="relative z-10">
+          <Navtop />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </div>
+        <video src="videos/background.mp4" className="fixed top-0 left-0 w-full h-full object-cover -z-10" autoPlay loop muted></video>
       </body>
     </html>
   );

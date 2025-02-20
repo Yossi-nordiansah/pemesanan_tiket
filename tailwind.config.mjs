@@ -14,6 +14,9 @@ export default {
         secondary: "#201658",
         tosca : "#20F1EE"
       },
+      fontFamily: {
+        japanese: ["go3v2"]
+      },
     },
   },
   plugins: [],

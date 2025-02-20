@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Gamepad2, Coins, Trophy, Users } from 'lucide-react';
+import WarTicket from './warTicket';
 
 const MetaVFestFAQPage = () => {
   const [activeTab, setActiveTab] = useState('faq');
@@ -103,23 +104,25 @@ const MetaVFestFAQPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-gray-950/35 text-white">
       <div className="relative inset-0 overflow-hidden opacity-20">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-600 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-pink-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/65 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-600/65 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-pink-500/65 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 border-b-4 border-cyan-500">
+      <div className="relative bg-gradient-to-r backdrop-blur-sm from-indigo-900/50 via-purple-900/50 to-indigo-900/50 border-b-4 border-cyan-500">
         <div className="container mx-auto px-4 py-12">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+          <h1 className="text-4xl font-japanese md:text-6xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
             METAVFEST 2025
           </h1>
-          <p className="text-xl mt-4 max-w-2xl text-cyan-100">
+          <p className="text-xl font-semibold mt-4 max-w-2xl text-cyan-100">
             Your ultimate guide to the anime, gaming & crypto community event
           </p>
         </div>
       </div>
+
+      <WarTicket/>
 
       <div className="relative z-10 container mx-auto px-4 py-12">
         <div className="flex flex-wrap gap-4 justify-center mb-12">
@@ -139,7 +142,7 @@ const MetaVFestFAQPage = () => {
           ))}
         </div>
 
-        <div className="bg-gray-900/80 backdrop-blur-xl rounded-2xl border-2 border-indigo-900/50 shadow-2xl shadow-purple-900/20 p-8 max-w-4xl mx-auto">
+        <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border-2 border-indigo-900/50 shadow-2xl shadow-purple-900/20 p-8 max-w-4xl mx-auto">
           <div className="mb-8 flex justify-center">
             <h2 className="text-3xl font-bold relative inline-block">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
