@@ -15,7 +15,12 @@ export default {
         tosca : "#20F1EE"
       },
       fontFamily: {
-        japanese: ["go3v2"]
+        japanese: ["go3v2"],
+        radjdhani_semibold : ['radjdhani_semibold'],
+        radjdhani_medium:['radjdhani_medium'],
+        radjdhani_bold:['radjdhani_bold'],
+        radjdhani_regular:['radjdhani_regular'],
+        radjdhani_light:['radjdhani_light'],
       },
     },
   },

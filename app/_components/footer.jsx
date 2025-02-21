@@ -3,7 +3,7 @@ import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail } from 'lucide-re
 
 const MetaVFestFooter = () => {
   return (
-    <footer className="bg-gray-900 text-white py-8 border-t border-cyan-500/30">
+    <footer className="bg-gray-900 text-white py-8 border-t border-cyan-500/30 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-1">

@@ -134,7 +134,7 @@ const StatsPage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-secondary to-blue-950 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-secondary/55 to-blue-950/55 py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {statsCards.map(card => (

@@ -20,7 +20,26 @@
   font-weight: normal;
   font-style: normal;
 }
-
+@font-face {
+  font-family: 'radjdhani_bold';
+  src: url('/fonts/Rajdhani-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'radjdhani_semibold';
+    src: url('/fonts/Rajdhani-SemiBold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'radjdhani_medium';
+    src: url('/fonts/Rajdhani-Medium.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'radjdhani_regular';
+    src: url('/fonts/Rajdhani-Regular.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'radjdhani_light';
+    src: url('/fonts/Rajdhani-Light.ttf') format('truetype');
+  }
 
 body {
   color: var(--foreground);
