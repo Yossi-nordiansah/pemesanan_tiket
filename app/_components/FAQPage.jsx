@@ -111,7 +111,11 @@ const MetaVFestFAQPage = () => {
         <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-pink-500/65 rounded-full blur-3xl"></div>
       </div>
 
+<<<<<<< HEAD
       <div className="relative bg-gradient-to-r backdrop-blur-sm from-indigo-900/50 via-purple-900/50 to-indigo-900/50 border-b-4 border-cyan-500">
+=======
+      <div className="relative bg-gradient-to-r from-violet-900 via-blue-950 to-blue-950 border-b-4 border-cyan-500">
+>>>>>>> accfc22 (Fitur Stats)
         <div className="container mx-auto px-4 py-12">
           <h1 className="text-4xl font-japanese md:text-6xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
             METAVFEST 2025
