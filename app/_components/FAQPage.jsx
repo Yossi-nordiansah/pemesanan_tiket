@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Gamepad2, Coins, Trophy, Users } from 'lucide-react';
 import WarTicket from './warTicket';
 import RegularTicket from './regularTicket';
+import Speakers from './speakers';
+import Partners from './partners';
 
 const MetaVFestFAQPage = () => {
   const [activeTab, setActiveTab] = useState('faq');
@@ -111,20 +113,6 @@ const MetaVFestFAQPage = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-600/65 rounded-full blur-3xl"></div>
         <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-pink-500/65 rounded-full blur-3xl"></div>
       </div>
-
-      <div className="relative bg-gradient-to-r backdrop-blur-sm from-indigo-900/50 via-purple-900/50 to-indigo-900/50 border-b-4 border-cyan-500">
-        <div className="container mx-auto px-4 py-12">
-          <h1 className="text-4xl font-japanese md:text-6xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
-            METAVFEST 2025
-          </h1>
-          <p className="text-xl font-semibold mt-4 max-w-2xl text-cyan-100">
-            Your ultimate guide to the anime, gaming & crypto community event
-          </p>
-        </div>
-      </div>
-
-      <WarTicket/>
-      <RegularTicket/>
       <div className="relative z-10 container mx-auto px-4 py-12">
         <div className="flex flex-wrap gap-4 justify-center mb-12">
           {categories.map((category) => (

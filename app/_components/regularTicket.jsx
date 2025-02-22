@@ -45,11 +45,11 @@ const RegularTicket = () => {
     ];
   
     return (
-        <section className="min-h-screen bg-black text-white py-12 px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section className="min-h-screen text-white py-6 px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {tickets.map((ticket, index) => (
           <motion.div
             key={index}
-            className="bg-gray-900 border-2 border-cyan-500 rounded-lg shadow-lg p-6 text-center flex flex-col justify-between"
+            className="bg-gray-900/65 backdrop-blur-sm border-2 border-cyan-500 rounded-lg shadow-lg p-6 text-center flex flex-col justify-between"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
