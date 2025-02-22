@@ -8,6 +8,7 @@ import RegularTicket from "./_components/regularTicket.jsx";
 import Speakers from "./_components/speakers.jsx";
 import Partners from "./_components/partners.jsx";
 import EventHighlights from "./_components/eventHighlights.jsx";
+import TicketPurchaseModal from "./_components/TicketPurchaseModal.jsx";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <Speakers/>
       <Partners/>
       <Faq/>
+      <TicketPurchaseModal/>
     </div>
   );
 }

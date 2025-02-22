@@ -73,7 +73,7 @@ const Speakers = () => {
     return (
         <section className="py-5 mt-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-3xl font-bold text-white mb-8 text-center">Our Speakers</h2>
+                <h2 className="text-3xl font-bold text-white mb-8 text-center">Our Guest</h2>
                 <Slider {...settings}>
                     {speakers.map((speaker, index) => (
                         <div key={index} className="px-3 h-full">

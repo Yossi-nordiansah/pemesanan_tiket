@@ -5,6 +5,11 @@ export default {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  variants: {
+    extend: {
+      scrollBehavior: ['responsive'],
+    },
+  },
   theme: {
     extend: {
       colors: {
@@ -22,6 +27,7 @@ export default {
         radjdhani_regular:['radjdhani_regular'],
         radjdhani_light:['radjdhani_light'],
       },
+      scrollBehavior: ['responsive'],
     },
   },
   plugins: [],

@@ -44,7 +44,7 @@ const WarTicket = () => {
       <p className="text-2xl md:text-4xl font-extrabold text-yellow-300 mt-4 text-center">
         💰 <span className="line-through text-red-500">Rp300.000</span> <span className="text-white animate-neon">NOW ONLY Rp75.000!</span>
       </p>
-      <p className="text-lg md:text-xl text-white mt-2 text-center">Only for 75 lucky people! 🎁</p>
+      <p className="text-lg md:text-xl text-white mt-2 text-center">Only for 100 lucky people! 🎁</p>
       <button className="mt-6 bg-yellow-400 text-black px-5 py-3 rounded-full font-semibold hover:bg-yellow-300 transition w-full md:w-auto animate-bounce">
         🎉 Grab Your Ticket Now!
       </button>

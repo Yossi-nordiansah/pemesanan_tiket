@@ -107,7 +107,7 @@ const MetaVFestFAQPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950/35 text-white">
+    <section className="min-h-screen bg-gray-950/35 text-white" id="faq">
     {/* Background Effect */}
     <div className="relative inset-0 overflow-hidden opacity-20 pointer-events-none">
         <div className="absolute top-0 right-0 w-72 h-72 md:w-96 md:h-96 bg-cyan-500/65 rounded-full blur-3xl"></div>
@@ -190,7 +190,7 @@ const MetaVFestFAQPage = () => {
             </button>
         </div>
     </div>
-</div>
+</section>
   );
 };
 
