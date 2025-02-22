@@ -108,82 +108,89 @@ const MetaVFestFAQPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-950/35 text-white">
-      <div className="relative inset-0 overflow-hidden opacity-20">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/65 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-600/65 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-pink-500/65 rounded-full blur-3xl"></div>
-      </div>
-      <div className="relative z-10 container mx-auto px-4 py-12">
-        <div className="flex flex-wrap gap-4 justify-center mb-12">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveTab(category.id)}
-              className={`px-6 py-4 rounded-xl font-bold text-lg transition-all flex items-center gap-2 ${
-                activeTab === category.id 
-                  ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-500/30 scale-105 border-2 border-cyan-400'
-                  : 'bg-gray-800/60 backdrop-blur-sm text-gray-300 hover:bg-gray-700/80 border-2 border-gray-700'
-              }`}
-            >
-              <span>{category.icon}</span>
-              {category.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border-2 border-indigo-900/50 shadow-2xl shadow-purple-900/20 p-8 max-w-4xl mx-auto">
-          <div className="mb-8 flex justify-center">
-            <h2 className="text-3xl font-bold relative inline-block">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
-                {categories.find(c => c.id === activeTab)?.label}
-              </span>
-              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-purple-500"></div>
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {faqContent[activeTab]?.map((item) => (
-              <div 
-                key={item.id} 
-                className="border border-gray-700/50 rounded-xl overflow-hidden bg-gray-800/30 backdrop-blur-sm hover:border-indigo-900/70 transition-all"
-              >
-                <button
-                  onClick={() => toggleItem(item.id)}
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-indigo-900/10 transition-colors"
-                >
-                  <span className="font-medium text-lg text-cyan-100">{item.question}</span>
-                  {expandedItems[item.id] ? (
-                    <ChevronUp className="text-cyan-400" />
-                  ) : (
-                    <ChevronDown className="text-cyan-400" />
-                  )}
-                </button>
-                
-                {expandedItems[item.id] && (
-                  <div className="px-6 py-4 border-t border-gray-700/50 bg-gray-900/50 text-gray-300">
-                    <p>{item.answer}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="relative container mx-auto px-4 py-12">
-        <div className="text-center">
-          <h3 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
-            Still have questions?
-          </h3>
-          <p className="mb-8 text-gray-300">
-            Our team of digital adventurers is ready to assist you!
-          </p>
-          <button className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-purple-500/30 border-2 border-purple-400/30 transform hover:scale-105">
-            Contact Support
-          </button>
-        </div>
-      </div>
+    {/* Background Effect */}
+    <div className="relative inset-0 overflow-hidden opacity-20 pointer-events-none">
+        <div className="absolute top-0 right-0 w-72 h-72 md:w-96 md:h-96 bg-cyan-500/65 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-72 h-72 md:w-96 md:h-96 bg-purple-600/65 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/4 w-52 h-52 md:w-64 md:h-64 bg-pink-500/65 rounded-full blur-3xl"></div>
     </div>
+
+    {/* Main Content */}
+    <div className="relative z-10 container mx-auto px-4 mt-10 py-4">
+        {/* Tabs for Categories */}
+        <div className="flex flex-wrap gap-3 justify-center mb-6">
+            {categories.map((category) => (
+                <button
+                    key={category.id}
+                    onClick={() => setActiveTab(category.id)}
+                    className={`px-4 py-3 sm:px-6 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all flex items-center gap-2 ${
+                        activeTab === category.id
+                            ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-500/30 scale-105 border-2 border-cyan-400'
+                            : 'bg-gray-800/60 backdrop-blur-sm text-gray-300 hover:bg-gray-700/80 border-2 border-gray-700'
+                    }`}
+                >
+                    <span className="text-lg">{category.icon}</span>
+                    {category.label}
+                </button>
+            ))}
+        </div>
+
+        {/* FAQ Section */}
+        <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border-2 border-indigo-900/50 shadow-2xl shadow-purple-900/20 p-6 sm:p-8 max-w-4xl mx-auto">
+            <div className="mb-8 flex justify-center">
+                <h2 className="text-2xl sm:text-3xl font-bold relative inline-block">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                        {categories.find((c) => c.id === activeTab)?.label}
+                    </span>
+                    <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-purple-500"></div>
+                </h2>
+            </div>
+
+            {/* FAQ Items */}
+            <div className="space-y-4">
+                {faqContent[activeTab]?.map((item) => (
+                    <div
+                        key={item.id}
+                        className="border border-gray-700/50 rounded-xl overflow-hidden bg-gray-800/30 backdrop-blur-sm hover:border-indigo-900/70 transition-all"
+                    >
+                        <button
+                            onClick={() => toggleItem(item.id)}
+                            className="w-full px-4 sm:px-6 py-3 sm:py-4 text-left flex justify-between items-center hover:bg-indigo-900/10 transition-colors"
+                        >
+                            <span className="font-medium text-base sm:text-lg text-cyan-100">{item.question}</span>
+                            {expandedItems[item.id] ? (
+                                <ChevronUp className="text-cyan-400" />
+                            ) : (
+                                <ChevronDown className="text-cyan-400" />
+                            )}
+                        </button>
+
+                        {expandedItems[item.id] && (
+                            <div className="px-4 sm:px-6 py-3 sm:py-4 border-t border-gray-700/50 bg-gray-900/50 text-gray-300">
+                                <p>{item.answer}</p>
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+
+    {/* Contact Section */}
+    <div className="relative container mx-auto px-4 py-10">
+        <div className="text-center">
+            <h3 className="text-xl sm:text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
+                Still have questions?
+            </h3>
+            <p className="mb-8 text-gray-300 text-sm sm:text-base">
+                Our team of digital adventurers is ready to assist you!
+            </p>
+            <button className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold transition-all shadow-lg shadow-purple-500/30 border-2 border-purple-400/30 transform hover:scale-105">
+                Contact Support
+            </button>
+        </div>
+    </div>
+</div>
   );
 };
 
