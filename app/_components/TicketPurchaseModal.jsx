@@ -34,7 +34,7 @@ export default function TicketPurchaseModal({ isOpen, onClose, onConfirm, ticket
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full p-2 border rounded"
+            className="w-full p-2 text-slate-900 border rounded"
           />
           <input
             type="email"
@@ -43,7 +43,7 @@ export default function TicketPurchaseModal({ isOpen, onClose, onConfirm, ticket
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded text-slate-900"
           />
           <input
             type="text"
@@ -52,7 +52,7 @@ export default function TicketPurchaseModal({ isOpen, onClose, onConfirm, ticket
             value={formData.whatsapp}
             onChange={handleChange}
             required
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded text-slate-900"
           />
           {ticket.title === 'Regular Ticket' && (
             <input
@@ -61,7 +61,7 @@ export default function TicketPurchaseModal({ isOpen, onClose, onConfirm, ticket
               placeholder="Referral Code (Optional)"
               value={formData.referralCode}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded text-slate-900"
             />
           )}
           <div className="flex justify-between">

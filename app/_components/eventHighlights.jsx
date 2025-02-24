@@ -26,13 +26,13 @@ const EventHighlights = () => {
         },
         { 
             title: "Networking", 
-            description: "Sesi temu bisnis dengan investor, developer, dan komunitas.", 
+            description: "Business meeting session with investors, developers, and the community.", 
             icon: <FaHandshake className="text-4xl text-blue-500" /> 
         }
     ];
 
     return (
-        <section className="py-4 mt-10 text-white" id='highlights'>
+        <section className="py-4 mt-10 text-white bg-gradient-to-b from-transparent to-blue-950/50" id='highlights'>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 className="text-3xl font-bold mb-8">🎉 Event Highlights <span className="text-indigo-400">(Why You Should Join)</span></h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

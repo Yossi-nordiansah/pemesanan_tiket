@@ -12,6 +12,15 @@ export default {
   },
   theme: {
     extend: {
+      keyframes: {
+        flicker: {
+          '0%, 100%': { filter: 'drop-shadow(0 0 5px #0096CF)' },
+          '50%': { filter: 'drop-shadow(0 0 1px #0096CF)' },
+        },
+      },
+      animation: {
+        flicker: 'flicker 2s infinite ease-in-out',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

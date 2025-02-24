@@ -16,9 +16,9 @@ export default function Home() {
       <Hero/>
       <StatsPage/>
       <Title/>
+      <EventHighlights/>
       <WarTicket/>
       <RegularTicket/>
-      <EventHighlights/>
       <Speakers/>
       <Partners/>
       <Faq/>

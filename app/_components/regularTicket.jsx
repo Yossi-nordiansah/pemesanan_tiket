@@ -9,8 +9,8 @@ export default function RegularTicket() {
   const tickets = [
     {
       title: 'War Ticket I',
-      price: 'Rp75.000',
-      originalPrice: 'Rp300.000',
+      price: 'Rp 75.000',
+      originalPrice: 'Rp 300.000',
       countdown: '2D :05H :00M :00S',
       status: 'Available',
       isAvailable: true,
@@ -19,8 +19,8 @@ export default function RegularTicket() {
     },
     {
       title: 'War Ticket II',
-      price: 'Rp100.000',
-      originalPrice: 'Rp300.000',
+      price: 'Rp 100.000',
+      originalPrice: 'Rp 300.000',
       countdown: 'Coming Soon',
       status: 'Not Started',
       isAvailable: false,
@@ -29,9 +29,9 @@ export default function RegularTicket() {
     },
     {
       title: 'Regular Ticket',
-      price: 'Rp300.000',
+      price: 'Rp 300.000',
       originalPrice: '',
-      countdown: '',
+      countdown: 'Coming Soon',
       status: 'Available',
       isAvailable: true,
       img: "/images/regular.png",

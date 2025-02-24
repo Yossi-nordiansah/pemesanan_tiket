@@ -50,19 +50,19 @@ const StatsPage = () => {
       id: 1,
       title: 'Dive into Emerging Markets',
       description: 'Get connected in Southeast Asia, the fastest-growing Web3 region in the world!',
-      image: '/api/placeholder/320/180'
+      image: '/images/bg1.jpg'
     },
     {
       id: 2,
       title: 'Jump Straight to Adoption',
       description: 'Foster collaborations directly in Indonesia where there are 22 million users',
-      image: '/api/placeholder/320/180'
+      image: '/images/bg2.jpg'
     },
     {
       id: 3,
       title: 'Unconventionally Engaging',
       description: 'Our immersive programming, setting, and sessions leave you with more memory markers than any other event',
-      image: '/api/placeholder/320/180'
+      image: '/images/bg3.jpg'
     }
   ];
 
