@@ -1,8 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navtop from "./_components/navtop";
-import Navbar from "./_components/navbar";
-import Footer from "./_components/footer";
+import LayoutWrapper from "./_components/LayoutWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,10 +23,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative h-screen overflow-y-auto`}>
         <div className="relative z-10">
-          <Navtop />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+        <LayoutWrapper>{children}</LayoutWrapper>
         </div>
         <video src="videos/background.mp4" className="fixed top-0 left-0 w-full h-full object-cover -z-10" autoPlay loop muted></video>
       </body>

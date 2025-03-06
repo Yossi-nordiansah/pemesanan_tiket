@@ -24,8 +24,8 @@ export default function TicketPurchaseModal({ isOpen, onClose, onConfirm, ticket
 
   return (
     <div className="fixed inset-0 px-6 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center">Purchase {ticket.title}</h2>
+      <div className="bg-slate-950/75 backdrop-blur-md p-6 rounded-lg shadow-lg w-96 border-4 border-cyan-500 drop-shadow-[0_0px_5px_#0096CF]">
+        <h2 className="text-2xl font-bold mb-4 text-white text-center">Purchase {ticket.title}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"

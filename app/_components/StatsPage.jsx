@@ -104,66 +104,10 @@ const StatsPage = () => {
     return () => cancelAnimationFrame(animationFrame);
   }, []);
 
-  const Mascot = ({ color, secondaryColor, position }) => (
-    <div 
-      className="absolute top-2 right-2 transition-transform duration-300 ease-in-out"
-      style={{ 
-        transform: `translate(${position.x}px, ${position.y}px)`,
-        filter: 'drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))',
-      }}
-    >
-      <div className="relative">
-        <div 
-          className="w-16 h-16 rounded-full relative"
-          style={{ backgroundColor: color }}
-        >
-          <div className="absolute top-3 left-2 w-4 h-4 bg-white rounded-full flex items-center justify-center">
-            <div className="w-2 h-2 bg-black rounded-full"></div>
-          </div>
-          <div className="absolute top-3 right-2 w-4 h-4 bg-white rounded-full flex items-center justify-center">
-            <div className="w-2 h-2 bg-black rounded-full"></div>
-          </div>
-          
-          <div 
-            className="absolute bottom-4 left-1/2 w-10 h-4 rounded-b-full -ml-5"
-            style={{ backgroundColor: secondaryColor }}
-          ></div>
-        </div>
-      </div>
-    </div>
-  );
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-secondary/55 to-blue-950/55 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-secondary/55 to-blue-950/55 py-4 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {statsCards.map(card => (
-            <div 
-              key={card.id}
-              className="bg-blue-700/40 backdrop-blur-sm rounded-xl border border-blue-500/30 p-6 relative overflow-hidden"
-            >
-              <div className="flex items-center space-x-3 mb-2">
-                <div className="p-2 bg-blue-600/50 rounded-lg">
-                  {card.icon}
-                </div>
-                <h3 className="text-gray-300 font-medium text-lg">{card.label}</h3>
-              </div>
-              <p className="text-5xl font-bold text-white mt-2">{card.number}</p>
-            
-              <Mascot 
-                color={card.mascotColor} 
-                secondaryColor={card.mascotSecondaryColor}
-                position={mascotPositions[card.id]}
-              />
-              
-              <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-blue-500/10 rounded-full"></div>
-              <div className="absolute top-4 right-20 w-4 h-4 bg-white/10 rounded-full"></div>
-              <div className="absolute bottom-12 right-8 w-2 h-2 bg-white/20 rounded-full"></div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-12 relative">
+        <div className="mt-6 relative">
           <h2 className="text-2xl font-bold text-white mb-6 text-center">Latest Updates</h2>
           
           <div className="relative h-80 overflow-hidden rounded-xl">
