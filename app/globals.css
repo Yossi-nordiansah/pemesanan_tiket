@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@font-face {
+  font-family: "go3v2";
+  src: url("/fonts/go3v2.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'radjdhani_bold';
+  src: url('/fonts/Rajdhani-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'radjdhani_semibold';
+    src: url('/fonts/Rajdhani-SemiBold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'radjdhani_medium';
+    src: url('/fonts/Rajdhani-Medium.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'radjdhani_regular';
+    src: url('/fonts/Rajdhani-Regular.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'radjdhani_light';
+    src: url('/fonts/Rajdhani-Light.ttf') format('truetype');
+  }
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
