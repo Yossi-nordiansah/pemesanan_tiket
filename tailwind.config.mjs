@@ -26,7 +26,10 @@ export default {
         foreground: "var(--foreground)",
         primary: "#0096CF",
         secondary: "#201658",
-        tosca : "#20F1EE"
+        tosca : "#20F1EE",
+        segaSunset: 'var(--sega-sunset)',
+        azureRadiance: 'var(--azure-radiance)',
+        frostedWhisper: 'var(--frosted-whisper)',
       },
       fontFamily: {
         japanese: ["go3v2"],

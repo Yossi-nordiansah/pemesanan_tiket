@@ -1,14 +1,51 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model users {
+  id       Int    @id @default(autoincrement())
+  username String @db.VarChar(100) @unique
+  email    String @db.VarChar(100) @unique
+  password String @db.VarChar(100)
+  news     news[]
+}
+
+model news {
+  id               Int      @id @default(autoincrement())
+  id_users         Int
+  head_news        String   @db.VarChar(100)
+  detail_news      String   @db.Text
+  date_publication DateTime @db.Date
+  header_image     String?  @db.VarChar(255)
+  detail_image     String?  @db.VarChar(255)
+
+  user             users     @relation(fields: [id_users], references: [id])
+  @@index([id_users])
+}
+
+model guests {
+  id           Int     @id @default(autoincrement())
+  name         String  @db.VarChar(100)
+  logo         String? @db.VarChar(255)
+  event        String  @db.VarChar(255)
+  image        String  @db.VarChar(255)
+  detail_guest String? @db.Text
+}
+
+model partners {
+  id           Int     @id @default(autoincrement())
+  partner_name String  @db.VarChar(100)
+  logo         String? @db.VarChar(255)
+  ref_code     String  @db.VarChar(20)
+  disc         Float   @db.Float
+  p_link       String? @db.VarChar(255)
+  p_gmap       String? @db.VarChar(255)
+  owner        String  @db.VarChar(255)
+}
+
+
