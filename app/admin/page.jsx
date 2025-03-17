@@ -8,15 +8,6 @@ export default function Admin() {
   const router = useRouter();
 
   useEffect(() => {
-<<<<<<< HEAD
-    const token = localStorage.getItem("accessToken");
-    if (!token) {
-      router.push("/auth/login");
-    } else {
-      setLoading(false);
-    }
-  }, []);
-=======
     const checkAuth = async () => {
       try {
         const res = await fetch('/api/auth/me');
@@ -35,7 +26,6 @@ export default function Admin() {
 
     checkAuth();
   }, [router]);
->>>>>>> 7739bf40c72d9ccde72dbcd00550e209ce0ba08e
 
   if (loading) return <p>Loading...</p>;
 

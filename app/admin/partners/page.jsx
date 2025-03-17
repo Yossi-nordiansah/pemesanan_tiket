@@ -20,7 +20,7 @@ export default function PartnersPage() {
         throw new Error('Failed to fetch partners');
       }
       
-      const data = await response.json();
+      const data = await response.json(); 
       setPartners(data);
     } catch (err) {
       setError(err.message);
@@ -57,7 +57,7 @@ export default function PartnersPage() {
     }
   };
   
-  const handleDeleteCancel = () => {
+  const handleDeleteCancel = () => { 
     setPartnerToDelete(null);
   };
   
