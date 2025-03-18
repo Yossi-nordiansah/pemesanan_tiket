@@ -3,51 +3,63 @@ import prisma from '@/lib/prisma';
 import { writeFile } from 'fs/promises';
 import path from 'path';
 
-export async function POST(req) {
-    const formData = await req.formData();
-    console.log("Received FormData:", formData);
-    const name = formData.get('name');
-    const event = formData.get('event');
-    const detail_guest = formData.get('detail_guest');
-    const logo = formData.get('logo');
-    const image = formData.get('image');
-
-    if (!name || !event || !detail_guest || !logo || !image) {
-        return NextResponse.json({ error: 'Semua field harus diisi' }, { status: 400 });
-    }
-
-    const logoPath = `/public/admin/guest/logo/${logo.name}`;
-    const imagePath = `/public/admin/guest/image/${image.name}`;
-
-    await writeFile(path.join(process.cwd(), logoPath), Buffer.from(await logo.arrayBuffer()));
-    await writeFile(path.join(process.cwd(), imagePath), Buffer.from(await image.arrayBuffer()));
-
-    const guest = await prisma.guests.create({
-        data: { name, event, detail_guest, logo: logoPath, image: imagePath },
-    });
-
-    return NextResponse.json(guest, { status: 201 });
-}
-
 export async function GET() {
     try {
-        console.log("Fetching guests from database...");
+      const guests = await prisma.guests.findMany({
+        orderBy: {
+          name: 'asc',
+        },
+      });
 
-        const guests = await prisma.guests.findMany({
-            orderBy: { createdAt: "desc" }
-        });
+      return NextResponse.json(Array.isArray(guests) ? guests : []);
+    } catch (error) {
+      console.error('Error fetching guests:', error);
+      return NextResponse.json({ error: 'Failed to fetch guests' }, { status: 500 });
+    }
+  }
 
-        console.log("Fetched Guests:", guests); // Log hasil dari database
+  export async function POST(req) {
+    try {
+        const formData = await req.formData();
+        
+        const name = formData.get('name');
+        const event = formData.get('event');
+        const detail_guest = formData.get('detail_guest');
+        const logo = formData.get('logo');
+        const image = formData.get('image');
 
-        if (!guests || guests.length === 0) {
-            console.warn("Database is empty or returned null.");
-            return NextResponse.json([], { status: 200 });
+        if (!name || !event || !detail_guest || !logo || !image) {
+            return NextResponse.json({ error: 'Semua field harus diisi' }, { status: 400 });
         }
 
-        return NextResponse.json(guests, { status: 200 });
-    } catch (error) {
-        console.error("Error fetching guests:", error);
+        if (!(logo instanceof File) || !(image instanceof File)) {
+            return NextResponse.json({ error: 'File logo dan image tidak valid' }, { status: 400 });
+        }
 
-        return NextResponse.json({ error: error.message || "Internal Server Error" }, { status: 500 });
+        const logoPath = `admin/guest/logo/${logo.name}`;
+        const imagePath = `admin/guest/image/${image.name}`;
+
+        const logoSavePath = path.join(process.cwd(), 'public', logoPath);
+        const imageSavePath = path.join(process.cwd(), 'public', imagePath);
+
+        await writeFile(logoSavePath, Buffer.from(await logo.arrayBuffer()));
+        await writeFile(imageSavePath, Buffer.from(await image.arrayBuffer()));
+
+        // Simpan ke database
+        const guest = await prisma.guests.create({
+            data: { 
+                name, 
+                event, 
+                detail_guest, 
+                logo: `/${logoPath}`, 
+                image: `/${imagePath}`
+            },
+        });
+
+        return NextResponse.json(guest, { status: 201 });
+
+    } catch (error) {
+        console.error("Error saving guest:", error);
+        return NextResponse.json({ error: 'Terjadi kesalahan pada server' }, { status: 500 });
     }
 }
