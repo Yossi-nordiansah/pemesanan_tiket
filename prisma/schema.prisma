@@ -9,9 +9,10 @@ datasource db {
 
 model users {
   id       Int    @id @default(autoincrement())
-  username String @db.VarChar(100) @unique
-  email    String @db.VarChar(100) @unique
+  username String @unique @db.VarChar(100)
+  email    String @unique @db.VarChar(100)
   password String @db.VarChar(100)
+  date     date[]
   news     news[]
 }
 
@@ -23,8 +24,8 @@ model news {
   date_publication DateTime @db.Date
   header_image     String?  @db.VarChar(255)
   detail_image     String?  @db.VarChar(255)
+  user             users    @relation(fields: [id_users], references: [id])
 
-  user             users     @relation(fields: [id_users], references: [id])
   @@index([id_users])
 }
 
@@ -48,4 +49,72 @@ model partners {
   owner        String  @db.VarChar(255)
 }
 
+model referrals {
+  id                  Int            @id @default(autoincrement())
+  code                String         @unique(map: "code") @db.VarChar(50)
+  discount_percentage Int
+  owner               String         @db.VarChar(255)
+  created_at          DateTime?      @default(now()) @db.Timestamp(0)
+  updated_at          DateTime?      @default(now()) @db.Timestamp(0)
+  transactions        transactions[]
+}
 
+model tickets {
+  id                Int             @id @default(autoincrement())
+  name              String          @db.VarChar(255)
+  price             Decimal         @db.Decimal(10, 2)
+  total_tickets     Int
+  remaining_tickets Int
+  status            tickets_status? @default(Coming_Soon)
+  transactions      transactions[]
+  war_tickets       war_tickets[]
+}
+
+model transactions {
+  id            Int                  @id @default(autoincrement())
+  name          String               @db.VarChar(255)
+  email         String               @db.VarChar(255)
+  whatsapp      String               @db.VarChar(20)
+  ticket_id     Int
+  referral_code String?              @db.VarChar(50)
+  price_paid    Decimal              @db.Decimal(10, 2)
+  qr_code       String               @db.VarChar(255)
+  status        transactions_status? @default(Pending)
+  purchase_time DateTime?            @default(now()) @db.Timestamp(0)
+  tickets       tickets              @relation(fields: [ticket_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "transactions_ibfk_1")
+  referrals     referrals?           @relation(fields: [referral_code], references: [code], onUpdate: NoAction, map: "transactions_ibfk_2")
+
+  @@index([referral_code], map: "referral_code")
+  @@index([ticket_id], map: "ticket_id")
+}
+
+model war_tickets {
+  id         Int      @id @default(autoincrement())
+  ticket_id  Int
+  start_time DateTime @db.DateTime(0)
+  end_time   DateTime @db.DateTime(0)
+  tickets    tickets  @relation(fields: [ticket_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "war_tickets_ibfk_1")
+
+  @@index([ticket_id], map: "ticket_id")
+}
+
+model date {
+  id       Int      @id @default(autoincrement())
+  id_admin Int
+  date     DateTime @db.DateTime(0)
+  users    users    @relation(fields: [id_admin], references: [id], onDelete: Cascade, map: "date_ibfk_1")
+
+  @@index([id_admin], map: "id_admin")
+}
+
+enum tickets_status {
+  Coming_Soon @map("Coming Soon")
+  Available
+  Sold_Out    @map("Sold Out")
+}
+
+enum transactions_status {
+  Pending
+  Paid
+  Canceled
+}

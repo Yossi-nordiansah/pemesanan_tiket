@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // Import icons from lucide-react (if you have it)
 // If you don't have lucide-react, you can replace with simple text or your preferred icons
@@ -14,22 +15,11 @@ export default function AdminDashboard() {
     guestsCount: 0,
     partnersCount: 0,
   });
-  
-  const [countdown, setCountdown] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-  
-  const [eventDate, setEventDate] = useState(() => {
-    // Try to get from localStorage or use default (7 days from now)
-    const savedDate = localStorage.getItem('metavfestEventDate');
-    return savedDate ? new Date(savedDate) : new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-  });
-  
+
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [targetDateTime, setTargetDateTime] = useState(null);
+  const [newDateTime, setNewDateTime] = useState('');
   const [isEditing, setIsEditing] = useState(false);
-  const [tempEventDate, setTempEventDate] = useState('');
 
   // Fetch counts from API
   useEffect(() => {
@@ -61,57 +51,70 @@ export default function AdminDashboard() {
     const interval = setInterval(fetchCounts, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
+
+    useEffect(() => {
+    const fetchTargetDateTime = async () => {
+      try {
+        const response = await axios.get('/api/event-date');
+        if (response.data && response.data.length > 0) {
+          const fetchedDate = new Date(response.data[0].date);
+          setTargetDateTime(fetchedDate);
+          setNewDateTime(fetchedDate.toISOString().slice(0, 16)); // format untuk input datetime-local
+        }
+      } catch (error) {
+        console.error('Error fetching target date:', error);
+      }
+    };
+
+    fetchTargetDateTime();
+  }, []);
   
   // Update countdown timer
-  useEffect(() => {
-    const updateCountdown = () => {
-      const now = new Date();
-      const diff = eventDate.getTime() - now.getTime();
-      
-      if (diff <= 0) {
-        // Event has passed
-        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-      
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      
-      setCountdown({ days, hours, minutes, seconds });
-    };
-    
-    // Update immediately and then every second
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-    return () => clearInterval(interval);
-  }, [eventDate]);
-  
-  // Save event date to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem('metavfestEventDate', eventDate.toISOString());
-  }, [eventDate]);
-  
-  const handleSaveDate = () => {
-    try {
-      const newDate = new Date(tempEventDate);
-      if (!isNaN(newDate.getTime())) {
-        setEventDate(newDate);
-        setIsEditing(false);
+    useEffect(() => {
+    if (!targetDateTime) return;
+
+    const intervalId = setInterval(() => {
+      const now = new Date().getTime();
+      const difference = targetDateTime.getTime() - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        setTimeLeft({ days, hours, minutes, seconds });
       } else {
-        alert('Please enter a valid date');
+        clearInterval(intervalId);
+        setTimeLeft({ days: 'Expired', hours: '', minutes: '', seconds: '' });
       }
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [targetDateTime]);
+
+    const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.put('/api/event-date', {
+        date: newDateTime
+      });
+
+      // Setel ulang target waktu dan update countdown
+      const updatedDate = new Date(newDateTime);
+      setTargetDateTime(updatedDate);
+
+      alert('Tanggal berhasil diperbarui!');
     } catch (error) {
-      alert('Invalid date format');
+      console.error('Gagal memperbarui tanggal:', error);
+      alert('Terjadi kesalahan saat memperbarui.');
     }
   };
-  
+
   const handleEditClick = () => {
-    setTempEventDate(eventDate.toISOString().substring(0, 16));
     setIsEditing(true);
   };
-
+  
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
@@ -131,12 +134,12 @@ export default function AdminDashboard() {
             <div className="flex gap-2">
               <input
                 type="datetime-local"
-                value={tempEventDate}
-                onChange={(e) => setTempEventDate(e.target.value)}
+                value={newDateTime}
+                onChange={(e) => setNewDateTime(e.target.value)}
                 className="text-black px-2 py-1 rounded text-sm"
               />
               <button 
-                onClick={handleSaveDate}
+                onClick={handleSubmit}
                 className="px-3 py-1 bg-green-500 hover:bg-green-600 rounded text-sm transition"
               >
                 Save
@@ -152,24 +155,24 @@ export default function AdminDashboard() {
         </div>
         
         <p className="mb-4">
-          Event starts on: {eventDate.toLocaleString()}
+        Event starts on: {targetDateTime ? targetDateTime.toLocaleString() : 'Loading...'}
         </p>
         
         <div className="grid grid-cols-4 gap-4 text-center">
           <div className="bg-white/10 rounded-lg p-4">
-            <div className="text-4xl font-bold">{countdown.days}</div>
+            <div className="text-4xl font-bold">{timeLeft.days}</div>
             <div className="text-xs uppercase tracking-wider mt-1">Days</div>
           </div>
           <div className="bg-white/10 rounded-lg p-4">
-            <div className="text-4xl font-bold">{countdown.hours}</div>
+            <div className="text-4xl font-bold">{timeLeft.hours}</div>
             <div className="text-xs uppercase tracking-wider mt-1">Hours</div>
           </div>
           <div className="bg-white/10 rounded-lg p-4">
-            <div className="text-4xl font-bold">{countdown.minutes}</div>
+            <div className="text-4xl font-bold">{timeLeft.minutes}</div>
             <div className="text-xs uppercase tracking-wider mt-1">Minutes</div>
           </div>
           <div className="bg-white/10 rounded-lg p-4">
-            <div className="text-4xl font-bold">{countdown.seconds}</div>
+            <div className="text-4xl font-bold">{timeLeft.seconds}</div>
             <div className="text-xs uppercase tracking-wider mt-1">Seconds</div>
           </div>
         </div>

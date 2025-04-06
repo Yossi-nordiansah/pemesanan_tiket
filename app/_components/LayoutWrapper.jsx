@@ -5,7 +5,7 @@ import Navbar from "./navbar";
 import Footer from "./footer";
 import Navtop from "./navtop";
 
-export default function LayoutWrapper({ children }) {
+export default function LayoutWrapper({ children }) { 
   const pathname = usePathname();
   const isAdminPage = pathname.startsWith("/admin");
   const isLoginPage = pathname.startsWith("/auth/login");
