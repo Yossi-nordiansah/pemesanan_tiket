@@ -1,17 +1,26 @@
-import React from 'react';
-import { FaLocationDot } from "react-icons/fa6";
+"use client"
+import React from "react";
 
 const Hero = () => {
   return (
-    <div className='text-white lg:h-screen py-10 bg-gradient-to-b from-black/5 to-secondary/55 flex justify-center'>
-        <div className='sm:mt-16 mt-20 relative w-full'>
-            <img src={"images/icon.png"} alt="logo" className='lg:w-[450px] md:w-[400px] w-80 mx-auto block mb-4 drop-shadow-[0_0px_5px_#0096CF] animate-flicker'/>
-            <p className='px-4 rounded-md sm:text-4xl sm:mb-2 mb-4 text-3xl bg-gradient-to-t from-purple-500 to-cyan-400 bg-clip-text text-transparent text-center font-bold font-radjdhani_bold'>MetaVFest - The Future of Web3 & Blockchain in Surabaya</p>
-            <p className='px-4 text-center font-radjdhani_semibold sm:text-xl'>"Explore. Learn. Network. Experience the World of Crypto, Metaverse, and Innovation."</p>
-            <p className='px-4 text-center font-radjdhani_semibold sm:text-xl mt-10'>Balai Pemuda Surabaya <FaLocationDot className='inline text-red-700'/> | 10 Mei 2025</p>
-        </div>
-    </div>
-  )
-}
+    <div className="relative flex flex-col items-center justify-center text-white lg:h-screen py-10 overflow-hidden pt-10 pb-20 lg:pb-32 bg-hero-gradient">
+      {/* Background Image */}
+      <img
+        src="/images/hero-1.png"
+        alt="hero background"
+        className="mt-20 absolute top-0 left-1/2 -translate-x-1/2 w-[95vw] lg:w-[85vw] md:w-[75vw] sm:w-[65vw] h-auto max-w-none object-cover"
+      />
 
-export default Hero
+      <div className="relative z-10 w-full flex flex-col items-center text-center px-4">
+        {/* Floating Logo (Hero-2) */}
+        <img
+          src="/images/hero-2.png"
+          alt="floating title"
+          className="w-[95vw] lg:w-[85vw] md:w-[75vw] sm:w-[65vw] max-w-none h-auto animate-float mt-auto lg:mt-32"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Hero;

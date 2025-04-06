@@ -1,7 +1,11 @@
 "use client"
 import React from 'react';
+import Marquee from "react-fast-marquee";
 
 const Partners = () => {
+    const getRandomOffset = () => {
+        return Math.random() * 20 - 10; // Offset antara -10px sampai +10px
+    };
     const partners = [
         { name: 'Polkadot', logo: 'https://cryptologos.cc/logos/polkadot-new-dot-logo.png' },
         { name: 'APTOS', logo: 'https://cryptologos.cc/logos/aptos-apt-logo.png' },
@@ -18,23 +22,34 @@ const Partners = () => {
         { name: 'Solana', logo: 'https://cryptologos.cc/logos/solana-sol-logo.png' },
         { name: 'Tezos', logo: 'https://cryptologos.cc/logos/tezos-xtz-logo.png' },
         { name: 'Algorand', logo: 'https://cryptologos.cc/logos/algorand-algo-logo.png' },
+        { name: 'Algorand', logo: 'https://cryptologos.cc/logos/algorand-algo-logo.png' },
     ];
 
     return (
-        <section className="mt-10 py-4" id="partner">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 className="text-3xl font-bold text-white mb-8">Our Partners</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                    {partners.map((partner, index) => (
-                        <div key={index} className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 hover:scale-105">
-                            <img src={partner.logo} alt={partner.name} className="h-12 object-contain" />
-                            <p className="text-sm font-medium text-gray-700">{partner.name}</p>
-                        </div>
-                    ))}
+        <div className="">
+          <h2 className="sm:text-4xl text-xl font-bold text-slate-800 lg:mb-16 mb-7 text-center">Partners</h2>
+          <Marquee  speed={50}>
+            <div className="flex sm:space-x-14 space-x-2">
+              {partners.map((partner, index) => (
+                <div 
+                  key={index} 
+                  className={`flex flex-col items-center p-4 space-y-1 ml-16 ${
+                    index % 2 === 0 ? "sm:mt-44 mt-40" : "mb-44"
+                  }`} // Efek tidak sejajar
+                >
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name} 
+                    className="w-24 h-24 object-contain" 
+                  />
+                  <span className="text-gray-700 font-semibold">{partner.name}</span>
                 </div>
+              ))}
             </div>
-        </section>
-    );
+          </Marquee>
+        </div>
+      );
 };
 
 export default Partners;
+

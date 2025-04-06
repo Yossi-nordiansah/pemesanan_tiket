@@ -64,20 +64,20 @@ const Navtop = () => {
 
     return (
         <div className='fixed px-3 py-1 flex justify-between w-full z-[100]'>
-            <div className={`flex items-center gap-2 transition-all duration-300 ease-in-out ${scrolled ? "translate-x-5" : "translate-x-0"}`}>
-                <img src="/images/logometavfest.png" alt="Logo" className="md:w-10 w-6" />
-                <h1 className={`text-black font-bold md:text-4xl text-[19px] transition-all duration-300 ${scrolled ? "hidden" : "block"}`}>
-                    MetaVFest
-                </h1>
-            </div>
-            <div className='px-2 py-1 bg-slate-100 backdrop-blur-md rounded-xl text-xs text-black text-center'>
-                <p>Starts In</p>
-                <h1 className='font-semibold text-sm md:text-base'>
-                    {timeLeft.days} d
-                    <span className="hidden sm:inline"> : {timeLeft.hours} h : {timeLeft.minutes} m</span>
-                </h1>
-            </div>
+        <div className={`flex items-center gap-2 transition-all duration-300 ease-in-out ${scrolled ? "translate-x-5" : "translate-x-0"}`}>
+            <img src="/images/logometavfest.png" alt="Logo" className="md:w-10 w-6" />
+            <h1 className={`text-black font-bold md:text-4xl text-[19px] transition-all duration-300 ${scrolled ? "hidden" : "block"}`}>
+                MetaVFest
+            </h1>
         </div>
+        <div className='px-2 py-1 bg-slate-100 backdrop-blur-md rounded-xl text-xs text-black text-center'>
+            <p>Starts In</p>
+            <h1 className='font-semibold text-sm md:text-base'>
+                {timeLeft.days} d 
+                <span className="hidden sm:inline"> : {timeLeft.hours} h : {timeLeft.minutes} m</span>
+            </h1>
+        </div>
+    </div>
     );
 };
 

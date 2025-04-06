@@ -107,7 +107,7 @@ const MetaVFestFAQPage = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-gray-950/35 text-white" id="faq">
+    <section className="min-h-screen text-white" id="faq" style={{backgroundImage: `url(${"/images/asset43.png"})`, backgroundPosition: "center", backgroundSize: 'cover'}}>
     {/* Background Effect */}
     <div className="relative inset-0 overflow-hidden opacity-20 pointer-events-none">
         <div className="absolute top-0 right-0 w-72 h-72 md:w-96 md:h-96 bg-cyan-500/65 rounded-full blur-3xl"></div>
@@ -116,7 +116,7 @@ const MetaVFestFAQPage = () => {
     </div>
 
     {/* Main Content */}
-    <div className="relative z-10 container mx-auto px-4 mt-10 py-4">
+    <div className="relative z-10 container mx-auto px-4 mt-14">
         {/* Tabs for Categories */}
         <div className="flex flex-wrap gap-3 justify-center mb-6">
             {categories.map((category) => (
@@ -126,7 +126,7 @@ const MetaVFestFAQPage = () => {
                     className={`px-4 py-3 sm:px-6 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all flex items-center gap-2 ${
                         activeTab === category.id
                             ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-500/30 scale-105 border-2 border-cyan-400'
-                            : 'bg-gray-800/60 backdrop-blur-sm text-gray-300 hover:bg-gray-700/80 border-2 border-gray-700'
+                            : 'bg-gradient-to-b from-red-600/70 to-blue-600/70 backdrop-blur-sm text-white hover:bg-gray-700/80 border-2 border-gray-700'
                     }`}
                 >
                     <span className="text-lg">{category.icon}</span>
@@ -136,13 +136,13 @@ const MetaVFestFAQPage = () => {
         </div>
 
         {/* FAQ Section */}
-        <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border-2 border-indigo-900/50 shadow-2xl shadow-purple-900/20 p-6 sm:p-8 max-w-4xl mx-auto">
+        <div className="bg-gradient-to-b from-red-700/70 to-blue-700/70 backdrop-blur-sm rounded-2xl border-2 border-indigo-900/50 shadow-2xl shadow-purple-900/20 p-6 sm:p-8 max-w-4xl mx-auto">
             <div className="mb-8 flex justify-center">
                 <h2 className="text-2xl sm:text-3xl font-bold relative inline-block">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                    <span className="text-white">
                         {categories.find((c) => c.id === activeTab)?.label}
                     </span>
-                    <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-purple-500"></div>
+                    <div className="absolute -bottom-2 left-0 right-0 h-1 bg-white"></div>
                 </h2>
             </div>
 
@@ -157,16 +157,16 @@ const MetaVFestFAQPage = () => {
                             onClick={() => toggleItem(item.id)}
                             className="w-full px-4 sm:px-6 py-3 sm:py-4 text-left flex justify-between items-center hover:bg-indigo-900/10 transition-colors"
                         >
-                            <span className="font-medium text-base sm:text-lg text-cyan-100">{item.question}</span>
+                            <span className="font-medium text-base sm:text-lg text-white">{item.question}</span>
                             {expandedItems[item.id] ? (
-                                <ChevronUp className="text-cyan-400" />
+                                <ChevronUp className="text-white" />
                             ) : (
-                                <ChevronDown className="text-cyan-400" />
+                                <ChevronDown className="text-white" />
                             )}
                         </button>
 
                         {expandedItems[item.id] && (
-                            <div className="px-4 sm:px-6 py-3 sm:py-4 border-t border-gray-700/50 bg-gray-900/50 text-gray-300">
+                            <div className="px-4 sm:px-6 py-3 sm:py-4 border-t border-gray-700/50 bg-gray-900/50 text-white">
                                 <p>{item.answer}</p>
                             </div>
                         )}
@@ -177,15 +177,15 @@ const MetaVFestFAQPage = () => {
     </div>
 
     {/* Contact Section */}
-    <div className="relative container mx-auto px-4 py-10">
+    <div className="relative container mx-auto px-4 pt-6 pb-24">
         <div className="text-center">
-            <h3 className="text-xl sm:text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-blue-600">
                 Still have questions?
             </h3>
-            <p className="mb-8 text-gray-300 text-sm sm:text-base">
+            <p className="mb-4 text-slate-900 font-bold text-sm sm:text-base">
                 Our team of digital adventurers is ready to assist you!
             </p>
-            <button className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold transition-all shadow-lg shadow-purple-500/30 border-2 border-purple-400/30 transform hover:scale-105">
+            <button className="bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-400 hover:to-blue-400 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold transition-all shadow-lg shadow-purple-500/30 border-2 border-purple-400/30 transform hover:scale-105">
                 Contact Support
             </button>
         </div>

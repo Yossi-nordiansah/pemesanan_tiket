@@ -6,7 +6,7 @@ const Navbar = () => {
   const router = useRouter();
 
   return (
-    <div className='fixed bottom-5 items-center md:w-fit w-5/6 px-6 py-2 flex md:gap-28 mx-auto left-1/2 -translate-x-1/2 bg-white/5 rounded-xl border backdrop-blur-md text-white md:justify-center justify-between font-semibold z-20'>
+    <div className='fixed bottom-5 items-center md:w-fit w-5/6 px-6 py-2 shadow-xl flex md:gap-28 mx-auto left-1/2 -translate-x-1/2 bg-slate-100 rounded-xl border backdrop-blur-md md:justify-center justify-between font-semibold z-[100]'>
         <a href="#highlights" className='md:block hidden scroll-smooth'>Highlights</a>
         <a href="#partner" className='md:block hidden scroll-smooth'>Partner</a>
         <a href="#faq" className='md:block hidden scroll-smooth'>FAQ</a>

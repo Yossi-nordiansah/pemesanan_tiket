@@ -1,15 +1,17 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat, Oi } from "next/font/google";
 import "./globals.css";
 import LayoutWrapper from "./_components/LayoutWrapper";
+import { TicketProvider } from "./context/TicketContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const oi = Oi({
+  variable: "--font-oi",
   subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata = {
@@ -18,18 +20,16 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const isAdminPage = typeof window !== 'undefined' && window.location.pathname.startsWith('/admin');
-  
+
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative h-screen overflow-y-auto`}>
+        className={`${montserrat.variable} ${oi.variable} antialiased relative h-screen overflow-y-auto bg-custom-pattern`}>
         <div className="relative z-10">
-        <LayoutWrapper>{children}</LayoutWrapper>
+          <TicketProvider>
+            <LayoutWrapper>{children}</LayoutWrapper>
+          </TicketProvider>
         </div>
-        {!isAdminPage && (
-          <video src="/videos/background.mp4" className="fixed top-0 left-0 w-full h-full object-cover -z-10" autoPlay loop muted></video>
-        )}
       </body>
     </html>
   );

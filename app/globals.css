@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Oi&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -47,6 +48,131 @@ html {
 
 body {
   color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
+  background: white;
+}
+
+.bg-hero-gradient {
+  background: 
+    radial-gradient(circle at center, white 10%, transparent 50%),
+    linear-gradient(to right, rgba(255, 0, 0, 0.2), white 30%, white 70%, rgba(0, 0, 255, 0.2)),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0) 70%, white 100%);
+  background-blend-mode: normal, overlay, overlay;
+}
+
+.special-text {
+  font-family: "Oi", cursive;
+}
+
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.animate-gradient-move {
+  background-size: 200% 200%;
+  animation: gradient-move 6s infinite linear;
+}
+
+.hover\:animate-gradient-shift:hover {
+  animation: gradient-shift 1s linear forwards;
+}
+
+/* Styling utama untuk carousel */
+.carousel-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1e1e1e;
+  overflow: visible;
+}
+
+/* Tombol navigasi */
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+  z-index: 10;
+  transition: background 0.3s;
+}
+.prev-btn:hover,
+.next-btn:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+/* Layout carousel */
+.carousel {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  transition: transform 1s ease-in-out;
+}
+
+/* Efek gambar */
+.carousel-item {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+/* Efek blur dan skala untuk gambar kecil */
+.small {
+  transform: scale(0.7);
+  filter: blur(4px);
+  opacity: 0.5;
+}
+
+/* Gambar utama yang besar */
+.large {
+  transform: scale(1);
+  filter: blur(0);
+  opacity: 1;
+}
+
+/* Transisi efek */
+.transition-slide {
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out, filter 1s ease-in-out;
+}
+
+/* Overlay judul */
+.overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+@keyframes attention {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+}
+
+.animate-attention {
+  animation: attention 1.5s infinite ease-in-out;
 }
