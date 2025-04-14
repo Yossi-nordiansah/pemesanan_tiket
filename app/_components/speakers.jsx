@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import Marquee from "react-fast-marquee";
 
 const Speakers = () => {
     const [speakers, setSpeakers] = useState([
@@ -11,7 +12,7 @@ const Speakers = () => {
             position: 'Chief Executive & Finance',
             image: '/images/trinova.png',
             companyLogo: '/images/icon.png',
-        },
+        }, 
         {
             name: 'Eko Subagyo',
             position: 'Vice Chief Executife & Marketing',
@@ -81,7 +82,7 @@ const Speakers = () => {
         <section className="">
             <div className="max-w-[1200px] mx-auto px-8 sm:px-6 lg:px-8">
                 <h2 className="sm:text-4xl text-xl font-bold text-slate-800 lg:mb-7 mb-12 text-center">Our Team</h2>
-                <Slider {...settings}>
+                <Marquee speed={60}>
                     {speakers.map((speaker, index) => (
                         <div key={index} className="px-3 w-full h-full">
                             <div className="relative bg-gradient-to-br from-blue-300 via-white to-red-300 backdrop-blur-lg rounded-lg shadow-lg p-2 text-center group flex flex-col h-full lg:justify-between justify-center lg:min-h-[420px] min-h-96">
@@ -94,7 +95,7 @@ const Speakers = () => {
                             </div>
                         </div>
                     ))}
-                </Slider>
+                </Marquee>
             </div>
         </section>
     );

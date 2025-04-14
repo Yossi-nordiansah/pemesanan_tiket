@@ -66,7 +66,7 @@ const Navtop = () => {
         <div className='fixed px-3 py-1 flex justify-between w-full z-[100]'>
         <div className={`flex items-center gap-2 transition-all duration-300 ease-in-out ${scrolled ? "translate-x-5" : "translate-x-0"}`}>
             <img src="/images/logometavfest.png" alt="Logo" className="md:w-10 w-6" />
-            <h1 className={`text-black font-bold md:text-4xl text-[19px] transition-all duration-300 ${scrolled ? "hidden" : "block"}`}>
+            <h1 className={`text-black font-bold lg:text-4xl md:text-2xl text-[19px] transition-all duration-300 ${scrolled ? "hidden" : "block"}`}>
                 MetaVFest
             </h1>
         </div>

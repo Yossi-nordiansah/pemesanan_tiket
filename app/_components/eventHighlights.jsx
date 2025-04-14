@@ -154,9 +154,6 @@ const EventHighlights = () => {
                                                 <p className="text-sm text-white/80 line-clamp-2">
                                                     {event.description.substring(0, 80)}...
                                                 </p>
-                                                <button className="bg-white/20 hover:bg-white/30 px-4 py-1.5 rounded-full text-sm transition-colors">
-                                                    See Details
-                                                </button>
                                             </div>
                                         )}
                                     </div>

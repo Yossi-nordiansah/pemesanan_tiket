@@ -10,14 +10,15 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useTicket } from "../context/TicketContext";
 
-
 export default function LayoutWrapper({ children }) {
   const { scrollToTickets } = useTicket();
   
   const pathname = usePathname();
   const isAdminPage = pathname.startsWith("/admin");
   const isLoginPage = pathname.startsWith("/auth/login");
-  const shouldHideLayout = isAdminPage || isLoginPage;
+  const isForm = pathname.startsWith("/form");
+  const isTicket = pathname.startsWith("/ticket");
+  const shouldHideLayout = isAdminPage || isLoginPage || isForm || isTicket;
 
   {/** AOS ANIMATIONS*/}
   useEffect(() => {

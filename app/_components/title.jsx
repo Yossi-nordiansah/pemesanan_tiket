@@ -17,8 +17,7 @@ const MyComponent = () => {
               METAVFEST 2025
             </h1>
             <p className="text-lg md:text-xl drop-shadow-md">
-              Your ultimate guide to the premier Web3 & crypto gathering, with
-              anime and gaming as exciting side attractions!
+            Your one-stop gate to the biggest Web3 & crypto event, with gaming and anime as thrilling extras!
             </p>
           </div>
         </div>

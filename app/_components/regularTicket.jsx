@@ -4,9 +4,16 @@ import TicketPurchaseModal from './TicketPurchaseModal';
 import { Heart, Clock } from 'lucide-react';
 
 export default function EventTickets() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [currentTime, setCurrentTime] = useState(new Date());
+
+  const formatRupiah = (value) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+    }).format(value);
+  };
 
   const events = [
     {
@@ -17,10 +24,10 @@ export default function EventTickets() {
       location: "Balai Pemuda, Surabaya",
       date: "Sunday, May 11, 2025",
       time: "06:00 PM",
-      price: "IDR 75.000",
+      price: 75000,
       organizer: "Metavfest Official",
       image: "/images/war1.webp",
-      originalPrice: "IDR 300.000",
+      originalPrice: "Rp 300.000,00",
       discount: "Limited Offer",
       quota: 100,
       saleStart: "2025-04-1T00:00:00",
@@ -34,10 +41,10 @@ export default function EventTickets() {
       location: "Balai Pemuda, Surabaya",
       date: "Sunday, May 11, 2025",
       time: "06:00 PM",
-      price: "IDR 100.000",
+      price: 100000,
       organizer: "Metavfest Official",
       image: "/images/war2.webp",
-      originalPrice: "IDR 300.000",
+      originalPrice: "Rp 300.000,00",
       discount: "Limited Offer",
       quota: 150,
       saleStart: "2025-04-16T00:00:00",
@@ -51,10 +58,10 @@ export default function EventTickets() {
       location: "Balai Pemuda, Surabaya",
       date: "Sunday, May 11, 2025",
       time: "06:00 PM",
-      price: "IDR 300.000",
+      price: 300000,
       organizer: "Metavfest Official",
       image: "/images/regular.webp",
-      originalPrice: "IDR 300.000",
+      originalPrice: "Rp 300.000,00",
       discount: "Use Referral Code",
       quota: "No Limit",
       saleStart: "2025-03-26T00:00:00",
@@ -188,7 +195,7 @@ export default function EventTickets() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                   <div>
-                    <span className="font-medium">{event.price}</span>
+                    <span className="font-medium">{formatRupiah(event.price)}</span>
                     {event.originalPrice && (
                       <span className="ml-2 text-xs text-gray-400 line-through">{event.originalPrice}</span>
                     )}
@@ -231,7 +238,7 @@ export default function EventTickets() {
       <TicketPurchaseModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        event={selectedTicket}
+        ticket={selectedTicket}
       />
     </div>
   );
