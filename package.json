@@ -22,7 +22,7 @@
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.475.0",
     "midtrans-client": "^1.4.2",
-    "next": "15.1.7",
+    "next": "^15.3.1",
     "next-auth": "^4.24.11",
     "nodemailer": "^6.10.1",
     "pdf-lib": "^1.17.1",
@@ -34,6 +34,8 @@
     "react-icons": "^5.5.0",
     "react-slick": "^0.30.3",
     "react-toastify": "^11.0.5",
+    "rechart": "^0.0.1",
+    "recharts": "^2.15.3",
     "slick-carousel": "^1.8.1",
     "uuid": "^11.1.0"
   },

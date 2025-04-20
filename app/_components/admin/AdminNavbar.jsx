@@ -64,6 +64,7 @@ export default function AdminNavbar() {
     { name: 'News', path: '/admin/news' },
     { name: 'Guest', path: '/admin/guests' },
     { name: 'Ticket', path: '/admin/tickets' },
+    { name: 'Transactions', path: '/admin/transactions' },
   ];
 
   if (loading) {
